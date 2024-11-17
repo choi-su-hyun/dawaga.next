@@ -1,0 +1,63 @@
+// ============================= 섹션 container START =============================
+.section {
+  padding: 1.6rem 0;
+  &--shadow-type {
+    background-color: var(--cool-gray100);
+    padding: var(--space-mid) var(--space-mid3);
+  }
+}
+.section-container {
+  margin: 0 auto;
+  width: 100%;
+  padding: 0 1.6rem;
+  &--shadow-type {
+    background-color: var(--background);
+    padding: var(--space-mid4) var(--space-mid2);
+    border-radius: var(--border-radius-sm);
+  }
+}
+// ============================= 섹션 container END =============================
+
+// 레이아웃 좌/우/중앙으로 flex
+.center-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+// ============================= form 관련 START =============================
+.form {
+  display: flex;
+  flex-direction: column;
+  .form-input-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 2.4rem;
+  }
+  &.form-space-gap--sm {
+    height: calc(100vh - 5.7rem - 3.2rem);
+    justify-content: space-between;
+  }
+  &.form-space-gap--md {
+    height: calc(100vh - 5.7rem - 4rem - 1.6rem);
+    justify-content: space-between;
+  }
+}
+// ============================= form 관련 END =============================
+
+// ============================= 버튼 배치 START =============================
+.link-btn {
+  display: inline-block;
+  width: 100%;
+}
+.btn-wrap {
+  display: flex;
+  gap: 1.6rem;
+  &--column {
+    flex-direction: column;
+  }
+  &--row {
+    flex-direction: row;
+  }
+}
+// ============================= 버튼 배치 END =============================

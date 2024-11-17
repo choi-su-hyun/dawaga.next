@@ -1,0 +1,24 @@
+.header {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.8rem 1.6rem;
+
+  & nav ul {
+    display: flex;
+    justify-content: center;
+    gap: 0.8rem;
+  }
+
+  & h1 {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 1.6rem;
+    font-weight: 700;
+    line-height: 100%;
+  }
+}

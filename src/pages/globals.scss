@@ -1,0 +1,228 @@
+/* reset css */
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+body {
+  line-height: 1;
+}
+ol,
+ul {
+  list-style: none;
+}
+blockquote,
+q {
+  quotes: none;
+}
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: "";
+  content: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+// ============================= 스타일 변수 START =============================
+// css 변수 및 기본 스타일
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+
+  //글자 크기
+  --font-x-sm: 1.2rem;
+  --font-sm: 1.4rem;
+  --font-mid: 1.6rem;
+  --font-mid2: 1.8rem;
+  --font-mid3: 2rem;
+  --font-lg: 2.4rem;
+
+  //색상
+  --cool-gray900: #29333d;
+  --cool-gray800: #3d4d5c;
+  --cool-gray700: #52677a;
+  --cool-gray600: #668099;
+  --cool-gray500: #a3b3c2;
+  --cool-gray400: #c2ccd6;
+  --cool-gray300: #e1e6eb;
+  --cool-gray200: #f3f5f7;
+  --cool-gray100: #f9fafb;
+  --primary-dark1: #fa3e00;
+  --primary: #ff622e;
+  --primary-light1: #ff8861;
+  --primary-light2: #ffece5;
+  --secondary-dark1: #d68000;
+  --secondary: #ffb13d;
+  --secondary-light1: #ffdaa3;
+  --secondary-light2: #ffefd6;
+  --alert-color: #eb5757;
+  --success-color: #27ae60;
+
+  //space
+  --space-x-sm: 0.4rem;
+  --space-sm: 0.6rem;
+  --space-mid: 0.8rem;
+  --space-mid2: 1.2rem;
+  --space-mid3: 1.6rem;
+  --space-mid4: 2rem;
+  --space-mid5: 2.4rem;
+
+  //border-radius
+  --border-radius-x-sm: 0.4rem;
+  --border-radius-sm: 0.8rem;
+  --border-radius-mid: 1.2rem;
+
+  //font-weight
+  --title-font-weight: 120%;
+  --paragragh-font-weight: 150%;
+  --small-text-font-weight: 140%;
+
+  //box-shadow
+  --box-shadow-modal: 0 8px 24px rgba(61, 77, 92, 0.15);
+
+  //background overlay
+  --background-modal: rgba(41, 51, 61, 0.7);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+// ============================= 스타일 변수 END =============================
+
+html,
+body {
+  max-width: 100vw;
+  /* overflow-x: hidden; */
+  font-size: 62.5%;
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  /* font-family: Arial, Helvetica, sans-serif; */
+  font-family: var(--font-pretendard);
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+@media (prefers-color-scheme: dark) {
+  html {
+    color-scheme: dark;
+  }
+}
