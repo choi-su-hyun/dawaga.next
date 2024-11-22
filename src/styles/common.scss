@@ -3,7 +3,7 @@
   padding: 1.6rem 0;
   &--shadow-type {
     background-color: var(--cool-gray100);
-    padding: var(--space-mid) var(--space-mid3);
+    padding: var(--space-mid2) var(--space-mid3);
   }
 }
 .section-container {
@@ -12,7 +12,7 @@
   padding: 0 1.6rem;
   &--shadow-type {
     background-color: var(--background);
-    padding: var(--space-mid4) var(--space-mid2);
+    padding: var(--space-mid3) var(--space-mid2);
     border-radius: var(--border-radius-sm);
   }
 }
@@ -42,6 +42,17 @@
     height: calc(100vh - 5.7rem - 4rem - 1.6rem);
     justify-content: space-between;
   }
+}
+
+.address-input-wrap {
+  display: flex;
+  align-items: flex-end;
+  gap: var(--space-mid);
+}
+.address-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-mid);
 }
 // ============================= form 관련 END =============================
 

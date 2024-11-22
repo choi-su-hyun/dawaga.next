@@ -184,59 +184,61 @@ const SignUp: NextPage<Props> = () => {
                   errorText={errors.passwordCheck?.message}
                 />
 
-                {/* 우편번호 */}
-                <div className={style["address-input-wrap"]}>
+                <div className="address-wrap">
+                  <div className="address-input-wrap">
+                    {/* 우편번호 */}
+                    <TextInput
+                      register={register("postCode", {
+                        required: {
+                          value: true,
+                          message: "주소 검색을 통해 주소를 입력해주세요",
+                        },
+                      })}
+                      type="text"
+                      label="주소"
+                      name="postCode"
+                      placeholder="우편번호"
+                      disabled
+                      errorText={errors.postCode?.message}
+                    />
+                    <Button
+                      type="button"
+                      variant="secondary-btn"
+                      size="size-x-small"
+                      onClick={() => router.push("?modal=true")}
+                    >
+                      주소 검색
+                    </Button>
+                  </div>
+
+                  {/* 주소 */}
                   <TextInput
-                    register={register("postCode", {
+                    register={register("address", {
                       required: {
                         value: true,
                         message: "주소 검색을 통해 주소를 입력해주세요",
                       },
                     })}
                     type="text"
-                    label="주소"
-                    name="postCode"
-                    placeholder="우편번호"
-                    disabled
-                    errorText={errors.postCode?.message}
+                    name="address"
+                    placeholder="주소"
+                    errorText={errors.address?.message}
                   />
-                  <Button
-                    type="button"
-                    variant="secondary-btn"
-                    size="size-x-small"
-                    onClick={() => router.push("?modal=true")}
-                  >
-                    주소 검색
-                  </Button>
+
+                  {/* 상세 주소 */}
+                  <TextInput
+                    register={register("addressDetail", {
+                      required: {
+                        value: true,
+                        message: "상세 주소를 입력해주세요",
+                      },
+                    })}
+                    type="text"
+                    name="addressDetail"
+                    placeholder="상세 주소"
+                    errorText={errors.addressDetail?.message}
+                  />
                 </div>
-
-                {/* 주소 */}
-                <TextInput
-                  register={register("address", {
-                    required: {
-                      value: true,
-                      message: "주소 검색을 통해 주소를 입력해주세요",
-                    },
-                  })}
-                  type="text"
-                  name="address"
-                  placeholder="주소"
-                  errorText={errors.address?.message}
-                />
-
-                {/* 상세 주소 */}
-                <TextInput
-                  register={register("addressDetail", {
-                    required: {
-                      value: true,
-                      message: "상세 주소를 입력해주세요",
-                    },
-                  })}
-                  type="text"
-                  name="addressDetail"
-                  placeholder="상세 주소"
-                  errorText={errors.addressDetail?.message}
-                />
               </div>
             </div>
             <div className="btn-wrap btn-wrap--column">
