@@ -6,11 +6,12 @@ type ButtonVariantType =
   | "cta-btn"
   | "ghost-btn"
   | "text-center"
-  | "secondary-btn";
-type ButtonSizeType = "size-small" | "size-x-small";
+  | "secondary-btn"
+  | "icon-btn";
+type ButtonSizeType = "size-small" | "size-x-small" | "icon-btn-size";
 
 interface Props extends ButtonHTMLAttributes<HTMLButtonElement> {
-  children: string;
+  children: string | ReactNode;
   variant?: ButtonVariantType; //버튼 종류
   size?: ButtonSizeType; //버튼 크기
   rightSlot?: ReactNode; //버튼 오른쪽에 넣는 아이콘

@@ -27,6 +27,9 @@
   color: var(--cool-gray900);
   background-color: var(--secondary);
 }
+.icon-btn {
+  background-color: transparent;
+}
 // variant END
 
 // size START
@@ -38,6 +41,10 @@
 .size-small {
   padding: var(--space-mid3) var(--space-mid5);
   border-radius: var(--border-radius-mid);
+  font-size: var(--font-mid);
+}
+.icon-btn-size {
+  padding: var(--space-x-sm);
   font-size: var(--font-mid);
 }
 // size END
