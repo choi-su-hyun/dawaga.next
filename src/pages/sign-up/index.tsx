@@ -14,6 +14,8 @@ import BottomModal from "@/components/common/Modal/BottomModal";
 import DaumPostcodeEmbed, { Address } from "react-daum-postcode";
 import { useRouter } from "next/router";
 import Seo from "@/components/Seo";
+import ModalContainer from "@/components/common/Modal/ModalContainer";
+import useModal from "@/hooks/useModal";
 // import { getStaticPaths } from "next/dist/build/templates/pages";
 
 interface Props {
@@ -46,6 +48,7 @@ const SignUp: NextPage<Props> = () => {
     formState: { errors },
   } = useForm<FormInput>();
   const router = useRouter();
+  const { openModal, closeModal } = useModal();
   const currentModal = router.query.modal;
   console.log(`router : `, router.query);
 
@@ -62,9 +65,7 @@ const SignUp: NextPage<Props> = () => {
     console.log(`data : `, data);
     setValue("postCode", data.zonecode);
     setValue("address", data.address);
-    router.back();
-    router.back();
-    console.log("back 작동");
+    closeModal("daumPostCode");
   };
 
   return (
@@ -205,7 +206,7 @@ const SignUp: NextPage<Props> = () => {
                       type="button"
                       variant="secondary-btn"
                       size="size-x-small"
-                      onClick={() => router.push("?modal=true")}
+                      onClick={() => openModal("daumPostCode")}
                     >
                       주소 검색
                     </Button>
@@ -260,15 +261,14 @@ const SignUp: NextPage<Props> = () => {
         </div>
       </section>
 
-      {/* 주소 검색 모달 */}
-      {currentModal === "true" && (
-        <BottomModal label="주소 검색">
-          <DaumPostcodeEmbed
-            onComplete={handleAddressComplete}
-            style={{ height: "600px" }}
-          />
-        </BottomModal>
-      )}
+      {/* ============================= 주소 검색 모달 [START] ============================= */}
+      <ModalContainer label="주소 검색" id="daumPostCode" position="bottom">
+        <DaumPostcodeEmbed
+          onComplete={handleAddressComplete}
+          style={{ height: "600px" }}
+        />
+      </ModalContainer>
+      {/* ============================= 주소 검색 모달 [END] ============================= */}
     </>
   );
 };

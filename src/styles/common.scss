@@ -15,6 +15,11 @@
     padding: var(--space-mid3) var(--space-mid2);
     border-radius: var(--border-radius-sm);
   }
+  &--gap-md {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-mid5);
+  }
 }
 // ============================= 섹션 container END =============================
 

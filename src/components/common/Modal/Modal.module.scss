@@ -1,6 +1,6 @@
 .modal {
   &__overlay {
-    position: absolute;
+    position: fixed;
     z-index: 20;
     display: flex;
     justify-content: center;
@@ -38,6 +38,13 @@
     color: var(--cool-gray900);
   }
 }
+
+// ============================= 지도 START =============================
+.kakao-map {
+  border-radius: var(--space-mid);
+  overflow: hidden;
+}
+// ============================= 지도 END =============================
 
 // ============================= 애니메이션 START =============================
 @keyframes slideUp {
