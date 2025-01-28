@@ -55,7 +55,7 @@ const DateInput: NextPage<Props> = ({
       >
         {/* ============================= 날짜 date picker START ============================= */}
         {dateRegister && (
-          <div className={style["custom-input-wrap"]}>
+          <div className={style["column2-input-wrap"]}>
             <input
               {...dateRegister}
               placeholder={datePlaceholder}
@@ -64,7 +64,7 @@ const DateInput: NextPage<Props> = ({
               onClick={handleFocus}
               {...rest}
             />
-            <div className={style["custom-input"]}>
+            <div className={style["column2-input"]}>
               <label htmlFor={dateName}>{dateValue}</label>
               <Calendar />
             </div>
@@ -84,7 +84,7 @@ const DateInput: NextPage<Props> = ({
 
         {/* ============================= 시간 date picker START ============================= */}
         {timeRegister && (
-          <div className={style["custom-input-wrap"]}>
+          <div className={style["column2-input-wrap"]}>
             <input
               {...timeRegister}
               placeholder={timePlaceholder}
@@ -93,7 +93,7 @@ const DateInput: NextPage<Props> = ({
               onClick={handleFocus}
               {...rest}
             />
-            <div className={style["custom-input"]}>
+            <div className={style["column2-input"]}>
               <label htmlFor={timeName}>{timeValue}</label>
               <Clock />
             </div>
