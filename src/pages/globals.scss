@@ -200,6 +200,21 @@ body {
   font-size: 62.5%;
 }
 
+// 스크롤 스타일
+::-webkit-scrollbar {
+  width: 0.5rem;
+  height: 0.5rem;
+}
+::-webkit-scrollbar-thumb {
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: var(--border-radius-mid);
+  background-color: var(--cool-gray300);
+}
+::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
 body {
   color: var(--foreground);
   background: var(--background);
