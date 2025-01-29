@@ -1,12 +1,6 @@
-import {
-  atom,
-  atomFamily,
-  DefaultValue,
-  selector,
-  selectorFamily,
-} from "recoil";
+import { atom, atomFamily, DefaultValue, selectorFamily } from "recoil";
 
-export type ModalType = "searchMap" | "daumPostCode";
+export type ModalType = "SearchMap" | "DaumPostCode";
 
 export type ModalParams = Record<string, unknown> | null;
 export type Modal = {
@@ -19,33 +13,36 @@ export const modalListState = atom<string[]>({
   default: [],
 });
 
-export const modalListSelector = selector({
+export const modalListSelector = selectorFamily({
   key: "modalListSelector",
-  get: ({ get }) => {
-    return get(modalListState).length > 0
-      ? get(modalListState)[get(modalListState).length - 1]
-      : "";
-  },
-  set: ({ get, set, reset }, newValue) => {
-    const currentList = get(modalListState);
-    if (newValue instanceof DefaultValue) {
-      reset(modalListState);
-      return;
-    }
+  get:
+    (modalId: string) =>
+    ({ get }) => {
+      const modalList = get(modalListState);
+      return modalList.includes(modalId); // modalId가 리스트에 포함되어 있는지 확인
+    },
+  set:
+    (modalId: string) =>
+    ({ get, set, reset }, newValue) => {
+      const currentList = get(modalListState);
+      if (newValue instanceof DefaultValue) {
+        reset(modalListState);
+        return;
+      }
 
-    if (!currentList.includes(newValue)) {
-      // newValue가 리스트에 없으면 추가
-      set(modalListState, [...currentList, newValue]);
-    } else {
-      // newValue가 리스트에 있으면 제거
-      set(
-        modalListState,
-        currentList.filter((item) => item !== newValue)
-      );
-    }
-
-    if (get(modalListState).find((item: string) => item === newValue)) return;
-  },
+      if (newValue) {
+        if (!currentList.includes(modalId)) {
+          // modalId가 리스트에 없으면 추가
+          set(modalListState, [...currentList, modalId]);
+        }
+      } else {
+        // modalId가 리스트에 있으면 제거
+        set(
+          modalListState,
+          currentList.filter((item) => item !== modalId)
+        );
+      }
+    },
 });
 // ============================= 모달 상태 [END] =============================
 

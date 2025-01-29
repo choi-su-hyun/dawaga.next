@@ -20,6 +20,9 @@
     flex-direction: column;
     gap: var(--space-mid5);
   }
+  &--full-height {
+    height: 100%;
+  }
 }
 // ============================= 섹션 container END =============================
 
@@ -29,6 +32,24 @@
   justify-content: center;
   align-items: center;
 }
+
+// ============================= 제목 [START] =============================
+.title {
+  color: var(--cool-gray500);
+  &-wrap {
+    &--btn-wrap {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+  }
+
+  &--sm {
+    font-weight: 400;
+    font-size: var(--font-sm);
+  }
+}
+// ============================= 제목 [END] =============================
 
 // ============================= form 관련 START =============================
 .form {
@@ -77,3 +98,21 @@
   }
 }
 // ============================= 버튼 배치 END =============================
+
+// ============================= 지도 [START] =============================
+.kakao-map {
+  border-radius: var(--space-mid);
+  overflow: hidden;
+}
+// ============================= 지도 [END] =============================
+
+.message-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: var(--space-x-sm);
+  height: 100%;
+  font-size: var(--font-mid);
+  color: var(--cool-gray600);
+}
