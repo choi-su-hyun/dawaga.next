@@ -10,12 +10,22 @@
   color: var(--cool-gray600);
   font-weight: 700;
 }
+.btn-style--have-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
-// variant START
+// ============================= variant [START] =============================
 .cta-btn {
   font-weight: 700;
   color: white;
   background-color: var(--primary);
+}
+.text-cta-btn {
+  font-weight: 600;
+  color: var(--primary-light1);
+  background-color: transparent;
 }
 .text-center {
   font-weight: 700;
@@ -30,9 +40,9 @@
 .icon-btn {
   background-color: transparent;
 }
-// variant END
+// ============================= variant [END] =============================
 
-// size START
+// ============================= size [START] =============================
 .size-x-small {
   padding: 0.8rem 1.6rem;
   border-radius: var(--border-radius-sm);
@@ -47,7 +57,7 @@
   padding: var(--space-x-sm);
   font-size: var(--font-mid);
 }
-// size END
+// ============================= size [END] =============================
 .full-width {
   width: 100%;
 }
