@@ -1,5 +1,3 @@
-"use client";
-
 import React, { ReactNode, useEffect, useRef } from "react";
 import Portal from "../Portal";
 import style from "./Modal.module.scss";
