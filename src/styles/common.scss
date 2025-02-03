@@ -55,6 +55,7 @@
 .form {
   display: flex;
   flex-direction: column;
+  gap: var(--space-mid3);
   .form-input-wrap {
     display: flex;
     flex-direction: column;
