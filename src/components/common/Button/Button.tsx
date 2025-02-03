@@ -9,7 +9,11 @@ type ButtonVariantType =
   | "text-center"
   | "secondary-btn"
   | "icon-btn";
-type ButtonSizeType = "size-small" | "size-x-small" | "icon-btn-size";
+type ButtonSizeType =
+  | "size-small"
+  | "size-x-small"
+  | "icon-btn-size"
+  | "text-btn-size";
 
 interface Props extends ButtonHTMLAttributes<HTMLButtonElement> {
   children: string | ReactNode;
