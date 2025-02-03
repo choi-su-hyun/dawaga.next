@@ -1,4 +1,4 @@
-import { modalListSelector, ModalType } from "@/stores/modalStore";
+import { modalListSelector } from "@/stores/modalStore";
 import { useRecoilCallback } from "recoil";
 
 function useModal(modalId: string) {
@@ -12,8 +12,8 @@ function useModal(modalId: string) {
 
   const closeModal = useRecoilCallback(
     ({ reset }) =>
-      (id: ModalType) => {
-        reset(modalListSelector(id));
+      () => {
+        reset(modalListSelector(modalId));
       },
     []
   );

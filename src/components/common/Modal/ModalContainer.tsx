@@ -10,16 +10,23 @@ interface Props {
   label?: string; //position이 bottom 일 경우에만 필요
   children: ReactNode;
   position: "center" | "bottom";
+  bottomModalHeight?: string;
 }
 
-function ModalContainer({ id, label, children, position }: Props) {
+function ModalContainer({
+  id, //외부클릭 시 해당 모달을 닫기 위해 id를 사용중
+  label,
+  children,
+  position,
+  bottomModalHeight,
+}: Props) {
   const modalList = useRecoilValue(modalListState);
   const modalRef = useRef<HTMLDivElement>(null);
-  const { closeModal } = useModal();
+  const { closeModal } = useModal(id);
 
   const handleModal = (event: MouseEvent) => {
     if (modalRef.current && !modalRef.current.contains(event.target as Node)) {
-      closeModal(id);
+      closeModal();
     }
   };
   useEffect(() => {
@@ -40,6 +47,7 @@ function ModalContainer({ id, label, children, position }: Props) {
             <div
               className={`${style["modal__content-box"]} ${style["modal-content--full-width"]} ${style["modal--bottom"]}`}
               ref={modalRef}
+              style={{ "--modal-height": bottomModalHeight }}
             >
               <h3 className={style["modal__title"]}>{label}</h3>
               {children}
@@ -59,10 +67,12 @@ function ModalContainer({ id, label, children, position }: Props) {
     );
   });
 
-  return createPortal(
-    <>{renderModal}</>,
-    document.getElementById("modal") as HTMLElement
-  );
+  if (typeof document !== "undefined") {
+    return createPortal(
+      <>{renderModal}</>,
+      document.getElementById("modal") as HTMLElement
+    );
+  }
 }
 
 export default ModalContainer;
