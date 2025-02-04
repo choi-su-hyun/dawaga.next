@@ -1,0 +1,21 @@
+.participants-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-mid2);
+  width: 100%;
+  padding: var(--space-mid);
+  border-radius: var(--border-radius-sm);
+  background-color: var(--cool-gray100);
+
+  .text-wrap {
+    display: flex;
+    align-items: center;
+    gap: var(--space-mid);
+
+    h4 {
+      font-size: var(--font-mid);
+      color: var(--cool-gray700);
+    }
+  }
+}
