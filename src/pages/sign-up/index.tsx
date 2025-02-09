@@ -1,5 +1,3 @@
-// "use client";
-
 import { NextPage } from "next";
 import style from "./SignUp.module.scss";
 import TextInput from "@/components/common/Input/TextInput";
@@ -10,7 +8,6 @@ import {
 } from "@/utils/inputTextLimit";
 import Link from "next/link";
 import Button from "@/components/common/Button/Button";
-import BottomModal from "@/components/common/Modal/BottomModal";
 import DaumPostcodeEmbed, { Address } from "react-daum-postcode";
 import { useRouter } from "next/router";
 import Seo from "@/components/Seo";
@@ -49,7 +46,6 @@ const SignUp: NextPage<Props> = () => {
   } = useForm<FormInput>();
   const router = useRouter();
   const { openModal, closeModal } = useModal();
-  const currentModal = router.query.modal;
   console.log(`router : `, router.query);
 
   const onValid = (data: FormInput) => {
@@ -65,7 +61,7 @@ const SignUp: NextPage<Props> = () => {
     console.log(`data : `, data);
     setValue("postCode", data.zonecode);
     setValue("address", data.address);
-    closeModal("daumPostCode");
+    closeModal("DaumPostCode");
   };
 
   return (
@@ -206,7 +202,7 @@ const SignUp: NextPage<Props> = () => {
                       type="button"
                       variant="secondary-btn"
                       size="size-x-small"
-                      onClick={() => openModal("daumPostCode")}
+                      onClick={() => openModal("DaumPostCode")}
                     >
                       주소 검색
                     </Button>
@@ -262,7 +258,7 @@ const SignUp: NextPage<Props> = () => {
       </section>
 
       {/* ============================= 주소 검색 모달 [START] ============================= */}
-      <ModalContainer label="주소 검색" id="daumPostCode" position="bottom">
+      <ModalContainer label="주소 검색" id="DaumPostCode" position="bottom">
         <DaumPostcodeEmbed
           onComplete={handleAddressComplete}
           style={{ height: "600px" }}
