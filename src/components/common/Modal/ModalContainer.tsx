@@ -16,9 +16,9 @@ interface Props {
 function ModalContainer({
   id, //외부클릭 시 해당 모달을 닫기 위해 id를 사용중
   label,
-  children,
   position,
   bottomModalHeight,
+  children,
 }: Props) {
   const modalList = useRecoilValue(modalListState);
   const modalRef = useRef<HTMLDivElement>(null);
@@ -36,9 +36,9 @@ function ModalContainer({
       document.removeEventListener("mousedown", handleModal);
     };
   });
-  const renderModal = modalList.map((id) => {
+  const renderModal = () => {
     return (
-      <div key={id}>
+      <div>
         {/* ============================= 모달 위치 - bottom [START] ============================= */}
         {position === "bottom" && (
           <div
@@ -65,11 +65,11 @@ function ModalContainer({
         {/* ============================= 모달 위치 - center [END] ============================= */}
       </div>
     );
-  });
+  };
 
   if (typeof document !== "undefined") {
     return createPortal(
-      <>{renderModal}</>,
+      <>{renderModal()}</>,
       document.getElementById("modal") as HTMLElement
     );
   }
