@@ -27,6 +27,7 @@
 
     &.modal-content--full-width {
       width: 100%;
+      height: var(--modal-height, 60rem);
       padding: 2rem 1.6rem;
     }
   }
@@ -38,6 +39,55 @@
     color: var(--cool-gray900);
   }
 }
+
+// ============================= 주소 검색 [START] =============================
+.location-list {
+  position: relative;
+  width: 100%;
+
+  &__wrap {
+    height: 100%;
+  }
+
+  &__drop-down {
+    position: absolute;
+    z-index: 10;
+    width: 100%;
+    overflow-y: auto;
+    margin-top: var(--space-mid);
+    background-color: white;
+
+    &-wrap {
+      max-height: 47.6rem;
+    }
+  }
+
+  &__drop-down-item {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-x-sm);
+    width: 100%;
+    padding: var(--space-mid);
+    border-bottom: 0.1rem solid var(--cool-gray300);
+    font-weight: 400;
+    font-size: var(--font-sm);
+    color: var(--cool-gray700);
+    background-color: white;
+    border: none;
+    cursor: pointer;
+
+    .location-title {
+      display: flex;
+      align-items: center;
+      gap: var(--space-x-sm);
+      color: var(--cool-gray700);
+    }
+    .location-description {
+      color: var(--cool-gray500);
+    }
+  }
+}
+// ============================= 주소 검색 [END] =============================
 
 // ============================= 지도 START =============================
 .kakao-map {
