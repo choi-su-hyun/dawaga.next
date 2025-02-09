@@ -11,6 +11,10 @@ import useModal from "@/hooks/useModal";
 import ModalContainer from "@/components/common/Modal/ModalContainer";
 import { useEffect, useRef, useState } from "react";
 import AddIcon from "@/assets/add.svg";
+import ParticipantsItem from "@/components/common/ParticipantsItem/ParticipantsItem";
+import AddParticipants from "@/components/common/Modal/AddParticipants";
+import { useRecoilValue } from "recoil";
+import { modalListState } from "@/stores/modalStore";
 
 interface FormInput {
   title: string;
@@ -27,6 +31,16 @@ const today = dayjs();
 // ============================= 날짜 END =============================
 
 const RegisterInvitePageBody: React.FC = ({}) => {
+  const { openModal: openSearchMapModal, closeModal: closeSearchMapModal } =
+    useModal("SearchMap");
+  const {
+    openModal: openAddParticipantsModal,
+    closeModal: closeAddParticipantsModal,
+  } = useModal("AddParticipants");
+
+  const testData = useRecoilValue(modalListState);
+
+  // ============================= form [START] =============================
   const {
     handleSubmit,
     register,
@@ -40,7 +54,6 @@ const RegisterInvitePageBody: React.FC = ({}) => {
       time: "00:00", // 초기값 설정,
     },
   });
-  const { openModal, closeModal } = useModal("SearchMap");
 
   const onValid = (data: FormInput) => {
     // TODO : API 보낼 때 에러 텍스트 관련해서 유의하자
@@ -53,6 +66,7 @@ const RegisterInvitePageBody: React.FC = ({}) => {
 
   const dateValue = watch("date");
   const timeValue = watch("time");
+  // ============================= form [END] =============================
 
   // ============================= 지도 [START] =============================
   const [map, setMap] = useState<any>(null); // 지도 상태 저장
@@ -70,7 +84,7 @@ const RegisterInvitePageBody: React.FC = ({}) => {
       map?.setBounds(bounds); // 검색된 장소가 보이도록 지도 범위 조정
     }
     setValue("address", placeData.address_name);
-    closeModal("SearchMap");
+    closeSearchMapModal();
   };
 
   // 지도 초기화
@@ -93,6 +107,7 @@ const RegisterInvitePageBody: React.FC = ({}) => {
   return (
     <>
       <Seo title="초대장 생성" />
+      {testData}
       <section className="section section--shadow-type">
         <div className="section-container section-container--shadow-type">
           {/* ============================= 작성 폼 [START] ============================= */}
@@ -151,7 +166,7 @@ const RegisterInvitePageBody: React.FC = ({}) => {
                     type="button"
                     variant="secondary-btn"
                     size="size-x-small"
-                    onClick={() => openModal()}
+                    onClick={() => openSearchMapModal()}
                   >
                     주소 검색
                   </Button>
@@ -183,16 +198,22 @@ const RegisterInvitePageBody: React.FC = ({}) => {
             {/* ============================= 카카오 지도 [END] ============================= */}
 
             {/* ============================= 참여 인원 [START] ============================= */}
-            <div className="title-wrap--btn-wrap">
-              <h4 className="title title--sm">모임 인원</h4>
-              <Button
-                type="button"
-                variant="text-cta-btn"
-                size="size-small"
-                leftSlot={<AddIcon />}
-              >
-                추가
-              </Button>
+            <div>
+              <div className="title-wrap--btn-wrap">
+                <h4 className="title title--sm">모임 인원</h4>
+                <Button
+                  type="button"
+                  variant="text-cta-btn"
+                  size="text-btn-size"
+                  leftSlot={<AddIcon />}
+                  onClick={() => openAddParticipantsModal()}
+                >
+                  추가
+                </Button>
+              </div>
+              <div className="">
+                <ParticipantsItem />
+              </div>
             </div>
             {/* ============================= 참여 인원 [END] ============================= */}
 
@@ -210,9 +231,17 @@ const RegisterInvitePageBody: React.FC = ({}) => {
         </div>
       </section>
 
+      {/* ============================= 주소 검색 [START] ============================= */}
       <ModalContainer label="주소 검색" id="SearchMap" position="bottom">
         <SearchMap eventPlaceData={handlePlaceData} />
       </ModalContainer>
+      {/* ============================= 주소 검색 [END] ============================= */}
+
+      {/* ============================= 참여 인원 추가 [START] ============================= */}
+      <ModalContainer label="주소" id="AddParticipants" position="bottom">
+        <AddParticipants />
+      </ModalContainer>
+      {/* ============================= 참여 인원 추가 [END] ============================= */}
     </>
   );
 };
